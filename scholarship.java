@@ -1,11 +1,18 @@
 public class scholarship {
     private String scholarshipName;
+    private int payout;
+    private String deadline;
     private String customRequiredInfo;
+    private String preferedMajors;
 
     public scholarship(){ //This is the constructor
         scholarshipName = "No Name";
+        payout = 0;
+        deadline = "N/A";
         customRequiredInfo = "None";
+        preferedMajors = "None";
     }
+    //FIXME: add in overloading
 
     ///////// Start mutators and accessors /////////
 
