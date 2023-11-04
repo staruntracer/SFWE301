@@ -1,7 +1,7 @@
 //This student class inherits from the user class
 public class student extends user{
     private String major;
-    private int gpa;
+    private double gpa;
     private String studentID; //FIXME: do we want this as a string or int for comparisons
     private String citizenship;
     private int unitsEnrolled; //FIXME: do we want this as a string or int for comparisons
@@ -12,7 +12,7 @@ public class student extends user{
 
     public student(){//This is the default constructor for the student class
         major = "None";
-        gpa = 0;
+        gpa = 0.0;
         studentID = "None";
         citizenship = "None";
         unitsEnrolled = 0;
@@ -21,4 +21,7 @@ public class student extends user{
         bursarAccountReference = "None";
     }
     //FIXME: add in overloading
+
+    
+
 }
