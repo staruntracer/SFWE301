@@ -1,4 +1,5 @@
 //This is a parent class for all users
+//For this file we will use inheritance 
 //The specific users will be a child 
 public class user {
     private String name;
