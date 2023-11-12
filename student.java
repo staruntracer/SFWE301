@@ -9,7 +9,7 @@ public class student extends user{
     private String essayResponses; //FIXME: may need a new database for this or we make an array of long strings here????
     private String bursarAccountReference;
     //FIXME: how do we want to do this ----->     private scholarship awardedScholarship;
-    //FIXME: see if we defer document upload
+
 
     public student(){//This is the default constructor for the student class
         this.major = "None";
