@@ -15,25 +15,14 @@ public class userDatabase {
         database.add(newUser); //This adds a new scholarship to the database
     }
 
-    public void removeFromDatabase(user inputUser){ //FIXME: figure out parameters
-        for (int i = 0; i < database.size(); i++) { //This loops through the database
-            if (database.get(i) == inputUser) { //This checks if the user is in the database
-                database.remove(i); //This removes the user from the database
-            }
-        }
+    public void removeFromDatabase(){ //FIXME: figure out parameters
+        //FIXME: figure out search parameters 
     }
 
-    public void editUserInDatabase(user NewUserInfo){ //FIXME: figure our parameters (maybe delete user and add in new one with new info??)
-        user updatedUser = NewUserInfo; //This is the user to edit
-        for(int i = 0; i < database.size(); i++) { //This loops through the database
-            //We will need to determine what to match on and then just the set method to update the user info
-        }
+    public user editUserInDatabase(){ //FIXME: figure our parameters
+        user userToEdit = null; //fixme this is temporary
 
-
-            // if (database.get(i) == NewUserInfo.get) { //This checks if the user is in the database
-            //     user userToEdit = database.get(i); //This gets the user to edit
-            //     return userToEdit; //This returns the user to edit
-            // }
+        return userToEdit; //This returns the updated version of the scholarship
     }
     
 }

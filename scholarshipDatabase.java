@@ -15,15 +15,13 @@ public class scholarshipDatabase {
         database.add(newScholarship); //This adds a new scholarship to the database
     }
 
-    public void removeFromDatabase(scholarship inputScholarship){ //FIXME: figure out parameters
-        for(int i = 0; i < database.size(); i++) { //This loops through the database
-            if (database.get(i) == inputScholarship) { //This checks if the scholarship is in the database
-                database.remove(i); //This removes the scholarship from the database
-            }
-        }
+    public void removeFromDatabase(){ //FIXME: figure out parameters
+        //FIXME: figure out search parameters 
     }
 
-    public void editScholarshipInDatabase(scholarship updatedScholarship){ //FIXME: figure our parameters
-        //FIXME: need to figure out what to match on to update
+    public scholarship editScholarshipInDatabase(){ //FIXME: figure our parameters
+        scholarship scholarshipToEdit = null; //fixme this is temporary
+
+        return scholarshipToEdit; //This returns the updated version of the scholarship
     }
 }
