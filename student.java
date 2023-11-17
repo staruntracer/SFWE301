@@ -2,9 +2,9 @@
 public class student extends user{
     private String major;
     private double gpa;
-    private String studentID; //FIXME: do we want this as a string or int for comparisons
+    private String studentID; 
     private String citizenship;
-    private int unitsEnrolled; //FIXME: do we want this as a string or int for comparisons
+    private int unitsEnrolled; 
     private String expectedGraduation;
     private String essayResponses; //FIXME: may need a new database for this or we make an array of long strings here????
     private String bursarAccountReference;
