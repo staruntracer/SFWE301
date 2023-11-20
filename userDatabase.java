@@ -35,5 +35,14 @@ public class userDatabase {
             //     return userToEdit; //This returns the user to edit
             // }
     }
+
+    public user searchByName(String inputUser){
+        for(int i = 0; i < database.size(); i++) { //This loops through the database
+            if (database.get(i).getName() == inputUser) { //This checks if the user is in the database
+                return database.get(i); //This returns the user
+            }
+        }
+        return null; //This returns null if the user is not found
+    }
     
 }

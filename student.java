@@ -6,7 +6,7 @@ public class student extends user{
     private String citizenship;
     private int unitsEnrolled; 
     private String expectedGraduation;
-    private String essayResponses; //FIXME: may need a new database for this or we make an array of long strings here????
+    private String essayResponses; 
     private String bursarAccountReference;
     //FIXME: how do we want to do this ----->     private scholarship awardedScholarship;
 
