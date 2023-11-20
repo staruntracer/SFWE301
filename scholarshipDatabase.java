@@ -26,4 +26,13 @@ public class scholarshipDatabase {
     public void editScholarshipInDatabase(scholarship updatedScholarship){ //FIXME: figure our parameters
         //FIXME: need to figure out what to match on to update
     }
+
+    public scholarship searchByName(String inputScholarship){ 
+        for(int i = 0; i < database.size(); i++) { //This loops through the database
+            if (database.get(i).getScholarshipName() == inputScholarship) { //This checks if the scholarship is in the database
+                return database.get(i); //This returns the scholarship
+            }
+        }
+        return null; //This returns null if the scholarship is not found
+    }
 }

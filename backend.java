@@ -7,8 +7,9 @@ public class backend {
         System.out.println("0) quit testing mode");
         System.out.println("1) Test user database");
         System.out.println("2) Test scholarship database");
-        System.out.println("3) test email notification");
-        System.out.println("4) Admin create new user");
+        System.out.println("3) Admin create new user");
+        System.out.println("4) Search scholarship by name");
+        System.out.println("5) Search user by name");
         System.out.println();
     }
 
@@ -38,24 +39,77 @@ public class backend {
 
         userData.addToDatabase(admin); //This adds the admin to the database since they are the first user
 
+
+        //FIXME: figure out how to swith user
+        user currentUser = new user();
+
         while(exit == false){ //This is our main loop
             app.printTestMenu();
             System.out.println("Enter a number to select an option: ");
             int appAction = input.nextInt(); //This reads in the user's option
+            int databaseAction; //This will be used to read in the user's option for the database test menu
             if(appAction == 0){
                 exit = true; //This will exit the loop on the next iteration
             }
             else if(appAction == 1){ //This will be used for testing the user database
                 app.databaseTestMenu();
+                System.out.println("Enter a number to select an option: ");
+                databaseAction = input.nextInt(); //This reads in the user's option
+                if(databaseAction == 1){ //add to user database
+
+                }
+                else if(databaseAction == 2){ //remove from user database
+
+                }
+                else if(databaseAction == 3){ //edit user in database
+
+                }
+                else{
+                    System.out.println("Invalid option. Please try again.");
+                }
             }
             else if(appAction == 2){ //This will be used for testing the scholarship database
                 app.databaseTestMenu();
+                System.out.println("Enter a number to select an option: ");
+                databaseAction = input.nextInt(); //This reads in the user's option
+                if(databaseAction == 1){ //add to scholarship database
+
+                }
+                else if(databaseAction == 2){ //remove from scholarship database
+
+                }
+                else if(databaseAction == 3){   //edit scholarship in database
+
+                }
+                else{
+                    System.out.println("Invalid option. Please try again.");
+                }
             }
             else if(appAction == 3){
-
+                admin.createAccount();
             }
             else if(appAction == 4){
-                admin.createAccount();
+                if(currentUser.getUserPermission() == "student" || currentUser.getUserPermission() == "reviewer" || currentUser.getUserPermission() == "admin"){
+                    //This check the user permission we allow admins to do everything
+                    scholarship foundScholarship;
+                    System.out.println("Enter the name of the scholarship you would like to search for: ");
+                    String scholarshipName = input.nextLine(); //This reads in the user's option
+                    foundScholarship = scholarshipData.searchByName(scholarshipName);
+                }
+                else{
+                    System.out.println("You do not have permission to perform this action.");
+                }
+            }
+            else if(appAction == 5){
+                if(currentUser.getUserPermission() == "admin"){
+                    user foundUser;
+                    System.out.println("Enter the name of the user you would like to search for: ");
+                    String userName = input.nextLine(); //This reads in the user's option
+                    foundUser = userData.searchByName(userName);
+                } 
+                else{
+                    System.out.println("You do not have permission to perform this action.");
+                }  
             }
             else{
                 System.out.println("Invalid option. Please try again.");
