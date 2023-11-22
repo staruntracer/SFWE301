@@ -45,7 +45,7 @@ public class backend {
 
         while(exit == false){ //This is our main loop
             app.printTestMenu();
-            System.out.println("Enter a number to select an option: ");
+            System.out.print("Enter a number to select an option: ");
             int appAction = input.nextInt(); //This reads in the user's option
             int databaseAction; //This will be used to read in the user's option for the database test menu
             if(appAction == 0){
@@ -53,16 +53,20 @@ public class backend {
             }
             else if(appAction == 1){ //This will be used for testing the user database
                 app.databaseTestMenu();
-                System.out.println("Enter a number to select an option: ");
+                System.out.print("Enter a number to select an option: ");
                 databaseAction = input.nextInt(); //This reads in the user's option
                 if(databaseAction == 1){ //add to user database
-
+                    //FIXME: figure out how to create a new user and which user should do it
                 }
                 else if(databaseAction == 2){ //remove from user database
-
+                    System.out.print("Enter the ID of the user you would like to remove: ");
+                    String userName = input.nextLine(); //This reads in the user's option
+                    userData.removeFromDatabase(userName);
                 }
                 else if(databaseAction == 3){ //edit user in database
-
+                    System.out.print("Enter the ID of the user you would like to edit: ");
+                    String userName = input.nextLine(); //This reads in the user's option
+                    userData.editUserInDatabase(userName);
                 }
                 else{
                     System.out.println("Invalid option. Please try again.");
@@ -70,23 +74,27 @@ public class backend {
             }
             else if(appAction == 2){ //This will be used for testing the scholarship database
                 app.databaseTestMenu();
-                System.out.println("Enter a number to select an option: ");
+                System.out.print("Enter a number to select an option: ");
                 databaseAction = input.nextInt(); //This reads in the user's option
                 if(databaseAction == 1){ //add to scholarship database
-
+                    //FIXME: figure out how to create a new scholarship and which user should do it
                 }
                 else if(databaseAction == 2){ //remove from scholarship database
-
+                    System.out.print("Enter the name of the scholarship you would like to remove: ");
+                    String scholarshipName = input.nextLine(); //This reads in the user's option
+                    scholarshipData.removeFromDatabase(scholarshipName);
                 }
                 else if(databaseAction == 3){   //edit scholarship in database
-
+                    System.out.print("Enter the name of the scholarship you would like to edit: ");
+                    String scholarshipName = input.nextLine(); //This reads in the user's option
+                    scholarshipData.editScholarshipInDatabase(scholarshipName);
                 }
                 else{
                     System.out.println("Invalid option. Please try again.");
                 }
             }
             else if(appAction == 3){
-                admin.createAccount();
+                admin.createAccount(); //FIXME: Maybe move this to adding a user to a database 
             }
             else if(appAction == 4){
                 if(currentUser.getUserPermission() == "student" || currentUser.getUserPermission() == "reviewer" || currentUser.getUserPermission() == "admin"){

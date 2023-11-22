@@ -156,5 +156,17 @@ public class student extends user{
     }
     ////// End mututators and accessors for the student class //////
     
+    public void printInfo(){
+        super.printInfo();
+        System.out.println("Major: " + this.major); 
+        System.out.println("GPA: " + this.gpa);
+        System.out.println("Student ID: " + this.studentID);
+        System.out.println("Citizenship: " + this.citizenship);
+        System.out.println("Units Enrolled: " + this.unitsEnrolled);
+        System.out.println("Expected Graduation: " + this.expectedGraduation);
+        System.out.println("Essay Responses: " + this.essayResponses); //FIXME: Not sure if we need to print this
+        System.out.println("Bursar Account Reference: " + this.bursarAccountReference);
+
+    }
 
 }

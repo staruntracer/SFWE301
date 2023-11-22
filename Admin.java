@@ -1,23 +1,23 @@
 //This class inherits from the user class
 import java.util.Scanner;
 public class Admin extends user{
-    private int adminID;
+    private String adminID;
 
     public Admin(){ //Default constructor
-        this.adminID = 0;
+        this.adminID = "None";
     }
 
     ///// Start Overloaded constructors for the Admin class /////
-    public Admin(int adminID){
+    public Admin(String adminID){
         this.adminID = adminID;
     }
     ///// End Overloaded constructors for the Admin class /////
 
     ///// Start Getters and Setters for the Admin class /////
-    public int getAdminID(){
+    public String getAdminID(){
         return adminID;
     }
-    public void setAdminID(int adminID){
+    public void setAdminID(String adminID){
         this.adminID = adminID;
     }
     ///// End Getters and Setters for the Admin class /////
@@ -48,6 +48,7 @@ public class Admin extends user{
             reviewer newReviewer = new reviewer();
             newReviewer.setUserPermission(userPermissions);  //Sets the user permission
             setBasicInfo(newReviewer, input);
+            setReviewerInfo(newReviewer, input);
         }
         else{
             System.out.println("Invalid user type. Please try again.");
@@ -101,7 +102,7 @@ public class Admin extends user{
 
     private Admin setAdminInfo(Admin inputAdmin, Scanner input) {
         System.out.println("Enter admin ID (ex. 1234567): ");
-        int adminID = input.nextInt();
+        String adminID = input.nextLine();
         inputAdmin.setAdminID(adminID);
         return inputAdmin;
     }
@@ -109,8 +110,22 @@ public class Admin extends user{
         System.out.println("Enter burser account reference (ex. 1234567): ");
         String bursarAccountReference = input.nextLine();
         inputDonor.setBursarAccountReference(bursarAccountReference);
+        System.out.println("Enter donor ID (ex. 1234567): ");
+        String donorID = input.nextLine();
+        inputDonor.setDonorID(donorID);
         return inputDonor;
     }
-    //FIXME: might need to add in a method for reviewer info
+    private reviewer setReviewerInfo(reviewer inputReviewer, Scanner input) {
+        System.out.println("Enter reviewer ID (ex. 1234567): ");
+        String reviewerID = input.nextLine();
+        inputReviewer.setReviewerID(reviewerID);
+        return inputReviewer;
+    }
+
+
+    public void printInfo(){
+        super.printInfo();
+        System.out.println("Admin ID: " + this.adminID);
+    }
 
 }
