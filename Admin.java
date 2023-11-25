@@ -22,53 +22,63 @@ public class Admin extends user{
     }
     ///// End Getters and Setters for the Admin class /////
 
-    public void createAccount(){ //FIXME: get all of the relevant info (this might be a really long method)
+    public user createAccount(){ 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter type of user: ");
+        System.out.print("Enter type of user (student, admin, reviewer, donor): ");
         String userPermissions = input.nextLine();
-        if(userPermissions == "student"){
+        userPermissions = userPermissions.strip(); //Removes leading and trailing whitespace
+        if(userPermissions.equals("student")){
             student newStudent = new student();
             newStudent.setUserPermission(userPermissions); //Sets the user permission
-            setBasicInfo(newStudent, input); //FIXME: might be an issue with inheritance
-            setStudentInfo(newStudent, input); //FIXME: might be an issue with inheritance or getting the information back
+            setBasicInfo(newStudent, input); 
+            setStudentInfo(newStudent, input);
+            System.out.println(); //Print a new line before the menu comes back up
+            return (user) newStudent;
         }
-        else if(userPermissions == "admin"){
+        else if(userPermissions.equals("admin")){
             Admin newAdmin = new Admin();
             newAdmin.setUserPermission(userPermissions); //Sets the user permission
             setBasicInfo(newAdmin, input);
             setAdminInfo(newAdmin, input);
+            System.out.println(); //Print a new line before the menu comes back up
+            return (user) newAdmin;
         }
-        else if(userPermissions == "donor"){
+        else if(userPermissions.equals("donor")){
             donor newDonor = new donor();
             newDonor.setUserPermission(userPermissions); //Sets the user permission
             setBasicInfo(newDonor, input);
             setDonorInfo(newDonor, input);
+            System.out.println(); //Print a new line before the menu comes back up
+            return (user) newDonor;
         }
-        else if(userPermissions == "reviewer"){
+        else if(userPermissions.equals("reviewer")){
             reviewer newReviewer = new reviewer();
             newReviewer.setUserPermission(userPermissions);  //Sets the user permission
             setBasicInfo(newReviewer, input);
             setReviewerInfo(newReviewer, input);
+            System.out.println(); //Print a new line before the menu comes back up
+            return (user) newReviewer;
         }
         else{
             System.out.println("Invalid user type. Please try again.");
         }
         input.close(); //Closes the scanner
+        return null;
     }
 
 
     private user setBasicInfo(user inputUser, Scanner input){
-        System.out.println("Enter name (ex. John Doe): ");
+        System.out.println("\nEnter name (ex. John Doe): ");
         String name = input.nextLine();
         inputUser.setName(name);
-        System.out.println("Enter email address (ex. JohnDoe@email.com): ");
+        System.out.println("\nEnter email address (ex. JohnDoe@email.com): ");
         String emailAddress = input.nextLine();
         inputUser.setEmailAddress(emailAddress);
-        System.out.println("Please enter 3 security questions seperated by a comma and a space");
+        System.out.println("\nPlease enter 3 security questions seperated by a comma and a space");
         System.out.println("Enter security question (ex. What is my favorite food, What is my favorite color, ...): ");
         String securityQuestion = input.nextLine();
         inputUser.setSecurityQuestion(securityQuestion);
-        System.out.println("Please enter 3 security questions answers seperated by a comma and a space");
+        System.out.println("\nPlease enter 3 security questions answers seperated by a comma and a space");
         System.out.println("Enter security question answers (ex. pizza, blue, ...): ");
         String securityQuestionAnswers = input.nextLine();
         inputUser.setSecurityQuestionAnswers(securityQuestionAnswers);
@@ -76,47 +86,49 @@ public class Admin extends user{
     }
 
     private student setStudentInfo(student inputStudent, Scanner input) {
-        System.out.println("Enter major (ex. Software Engineering): ");
+        System.out.println("\nEnter major (ex. Software Engineering): ");
         String major = input.nextLine();
         inputStudent.setMajor(major);
-        System.out.println("Enter GPA (ex. 3.5): ");
+        System.out.println("\nEnter GPA (ex. 3.5): ");
         double gpa = input.nextDouble();
+        input.nextLine(); //This is to get rid of the newline character
         inputStudent.setGpa(gpa);
-        System.out.println("Enter student ID (ex. 1234567): ");
+        System.out.println("\nEnter student ID (ex. 1234567): ");
         String studentID = input.nextLine();
         inputStudent.setStudentID(studentID);
-        System.out.println("Enter citizenship (ex. US Citizen): ");
+        System.out.println("\nEnter citizenship (ex. US Citizen): ");
         String citizenship = input.nextLine();
         inputStudent.setCitizenship(citizenship);
-        System.out.println("Enter units enrolled (ex. 12): ");
+        System.out.println("\nEnter units enrolled (ex. 12): ");
         int unitsEnrolled = input.nextInt();
+        input.nextLine(); //This is to get rid of the newline character
         inputStudent.setUnitsEnrolled(unitsEnrolled);
-        System.out.println("Enter expected graduation (ex. May, 2022): ");
+        System.out.println("\nEnter expected graduation (ex. May, 2022): ");
         String expectedGraduation = input.nextLine();
         inputStudent.setExpectedGraduation(expectedGraduation);
-        System.out.println("Enter burser account reference (ex. 1234567): ");
+        System.out.println("\nEnter burser account reference (ex. 1234567): ");
         String bursarAccountReference = input.nextLine();
         inputStudent.setBursarAccountReference(bursarAccountReference);
         return inputStudent;
     }
 
     private Admin setAdminInfo(Admin inputAdmin, Scanner input) {
-        System.out.println("Enter admin ID (ex. 1234567): ");
+        System.out.println("\nEnter admin ID (ex. 1234567): ");
         String adminID = input.nextLine();
         inputAdmin.setAdminID(adminID);
         return inputAdmin;
     }
     private donor setDonorInfo(donor inputDonor, Scanner input) {
-        System.out.println("Enter burser account reference (ex. 1234567): ");
+        System.out.println("\nEnter burser account reference (ex. 1234567): ");
         String bursarAccountReference = input.nextLine();
         inputDonor.setBursarAccountReference(bursarAccountReference);
-        System.out.println("Enter donor ID (ex. 1234567): ");
+        System.out.println("\nEnter donor ID (ex. 1234567): ");
         String donorID = input.nextLine();
         inputDonor.setDonorID(donorID);
         return inputDonor;
     }
     private reviewer setReviewerInfo(reviewer inputReviewer, Scanner input) {
-        System.out.println("Enter reviewer ID (ex. 1234567): ");
+        System.out.println("\nEnter reviewer ID (ex. 1234567): ");
         String reviewerID = input.nextLine();
         inputReviewer.setReviewerID(reviewerID);
         return inputReviewer;

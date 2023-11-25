@@ -190,8 +190,16 @@ public class student extends user{
         System.out.println("Bursar Account Reference: " + this.bursarAccountReference);
         System.out.println("Awarded Scholarships: ");
 
-        //FIXME: need to print the two databases
-
+        System.out.println("Awarded Scholarships:");
+        for(int i = 0; i < this.awardedScholarships.size(); i++){
+            System.out.println(this.awardedScholarships.get(i).getScholarshipName());
+        }
+        System.out.println(); //Print and extra new line for formatting
+        System.out.println("Submitted Applications:");
+        for(int i = 0; i < this.submittedApplications.size(); i++){
+            System.out.println(this.submittedApplications.get(i).getScholarshipName());
+        }
+        System.out.println(); //Print and extra new line for formatting
     }
 
     public void archiveAwardedScholarship(scholarship inputScholarship){
@@ -211,6 +219,7 @@ public class student extends user{
         System.out.println(inputScholarship.getCustomRequiredInfo());
         System.out.println("Please enter your responses to the following questions (seperated by commas): ");
         String studentAnswers = scnr.nextLine();
+        essayQuestions(inputScholarship);
         String scholarshipResponses = studentAnswers + this.essayResponses; //This concatinates both the student's responses to the scholarship questions and their essay responses as well
         newApplication.setScholarshipResponses(scholarshipResponses);
         System.out.println("Would you like to submit your application? (y/n)");

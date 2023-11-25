@@ -132,8 +132,42 @@ public class userDatabase {
 
     public user searchByName(String inputUser){
         for(int i = 0; i < database.size(); i++) { //This loops through the database
-            if (database.get(i).getName() == inputUser) { //This checks if the user is in the database
+            if (database.get(i).getName().equals(inputUser)){ //This checks if the user is in the database
                 return database.get(i); //This returns the user
+            }
+        }
+        return null; //This returns null if the user is not found
+    }
+
+    public user searchByID(String inputID){
+        for(int i = 0; i < database.size(); i++) { //This loops through the database
+            if(database.get(i).getUserPermission() == "admin"){
+                Admin adminUser = (Admin) database.get(i); //Typecast to admin child class
+                if(adminUser.getAdminID() == inputID){
+                    return (user) adminUser;
+                }
+            }
+            else if(database.get(i).getUserPermission() == "reviewer"){
+                reviewer reviewerUser = (reviewer) database.get(i); //Typecast to reviewer child class
+                if(reviewerUser.getReviewerID() == inputID){
+                    return (user) reviewerUser;
+                }
+            }
+            else if(database.get(i).getUserPermission() == "student"){
+                student studentUser = (student) database.get(i); //Typecast to student child class
+                if(studentUser.getStudentID() == inputID){
+                    return (user) studentUser;
+                }
+            }
+            else if(database.get(i).getUserPermission() == "donor"){
+                donor donorUser = (donor) database.get(i); //Typecast to donor child class
+                if(donorUser.getDonorID() == inputID){
+                    return (user) donorUser;
+                }
+            }
+            else{
+                //This should never execute just leaving in for sanity check
+                System.out.println("Error: User type not found");
             }
         }
         return null; //This returns null if the user is not found

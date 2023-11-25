@@ -1,8 +1,7 @@
 //This inherits from the user class
 public class reviewer extends user{
     private String reviewerID;
-    //FIXME: add in a search student/scholarship feature??
-
+    
     public reviewer(){ //Default constructor
         this.reviewerID = "None";
     }
@@ -22,4 +21,9 @@ public class reviewer extends user{
     }
     ///// End Getters and Setters for the reviewer class /////
     
+    ///// Start Methods for the reviewer class /////
+    public void printInfo(){
+        super.printInfo();
+        System.out.println("Reviewer ID: " + this.reviewerID);
+    }
 }
