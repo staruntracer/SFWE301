@@ -86,5 +86,13 @@ public class user {
         this.userPermission = userPermission;
     }
     ////// End of getters and setters for the user class //////
+
+    public void printInfo(){
+        System.out.println("Name: " + this.name);
+        System.out.println("Email Address: " + this.emailAddress);
+        System.out.println("Security Question: " + this.securityQuestion); //Only print out for verification of rqmt
+        System.out.println("Security Question Answers: " + this.securityQuestionAnswers); //Only print out for verification of rqmt
+        System.out.println("User Permission: " + this.userPermission);
+    }
     
 }

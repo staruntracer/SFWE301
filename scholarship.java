@@ -2,7 +2,7 @@ public class scholarship {
     private String scholarshipName;
     private int payout;
     private String deadline;
-    private String customRequiredInfo;
+    private String customRequiredInfo; //CSV of info required for scholarship
     private String preferedMajors;
 
     public scholarship(){ //This is the constructor
@@ -57,7 +57,13 @@ public class scholarship {
         return scholarshipName;
     }
     public void setScholarshipName(String scholarshipName){
-        this.scholarshipName = scholarshipName;
+        if(this.scholarshipName == "No Name"){
+            this.scholarshipName = scholarshipName;
+        }
+        else{
+            System.out.println("Scholarship name already set. Scholarship names are immutable once set.");
+        } //To work with a database we are making scholarship names immutable meaning once the name is set it cannot be changed
+        //All other information in the scholarship can be changed
     }
     public int getPayout(){
         return payout;
@@ -84,5 +90,14 @@ public class scholarship {
         this.preferedMajors = preferedMajors;
     }
     ///////// End mutators and accessors /////////
+
+    ///////// Start methods /////////
+    public void printScholarshipInfo(){
+        System.out.println("Scholarship Name: " + scholarshipName);
+        System.out.println("Payout: " + payout);
+        System.out.println("Deadline: " + deadline);
+        System.out.println("Custom Required Info: " + customRequiredInfo);
+        System.out.println("Prefered Majors: " + preferedMajors);
+    }
     
 }
