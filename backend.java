@@ -51,7 +51,7 @@ public class backend {
         userData.addToDatabase(admin); //This adds the admin to the database since they are the first user
         currentUser = admin; //This sets the current user to the admin 
 
-        System.out.println("********** Welcome to the UArizona Scholarship Application Managment System. **********\n");
+        System.out.println("********** Welcome to the UArizona Scholarship Application Management System. **********\n");
         System.out.print("To start using the system type 'Login':");
         String userStartInput = input.nextLine(); //This is used to clear the scanner buffer
         while(exit == false){
@@ -249,7 +249,7 @@ public class backend {
                 input.nextLine(); //This is used to clear the scanner buffer
             } //This will catch all errors if they occur and return to the main menu
         }
-        System.out.println("\n********** Thank you for using the UArizona Scholarship Application Managment System. **********\n");
+        System.out.println("\n********** Thank you for using the UArizona Scholarship Application Management System. **********\n");
         input.close(); //This closes the scanner object
     }
 }
