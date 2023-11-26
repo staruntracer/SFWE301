@@ -12,6 +12,7 @@ public class backend {
         System.out.println("4) Search scholarship by name");
         System.out.println("5) Search user by name");
         System.out.println("6) Switch user");
+        System.out.println("7) Test scholarship archival");
         System.out.println();
     }
 
@@ -222,6 +223,19 @@ public class backend {
                     System.out.println("User switched to " + currentUser.getName() + " successfully.");
                     //Print out the name of the user that was switched to
                 }
+                else if(appAction == 7){
+                    if(currentUser.getUserPermission() == "student" || currentUser.getUserPermission() == "reviewer" || currentUser.getUserPermission() == "admin"){
+                        //FIXME: might be an issue with typecasting
+                        System.out.print("Enter the name of the scholarship you would like to archive (For testing purposes): ");
+                        String scholarshipName = input.nextLine(); //This reads in the user's option
+                        scholarship foundScholarship = scholarshipData.searchByName(scholarshipName);
+                        student currentStudent = (student) currentUser; //Need to typcast the current user to a student
+                        currentStudent.archiveAwardedScholarship(foundScholarship); //This tests the archival function for a scholarship
+                    }
+                    else{
+                        System.out.println("You do not have permission to perform this action.");
+                    }
+                }   
                 else{
                     System.out.println("\nInvalid option. Please try again.\n");
                 }
