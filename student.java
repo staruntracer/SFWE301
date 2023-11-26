@@ -189,8 +189,6 @@ public class student extends user{
         System.out.println("Essay Responses: " + this.essayResponses); 
         System.out.println("Bursar Account Reference: " + this.bursarAccountReference);
         System.out.println("Awarded Scholarships: ");
-
-        System.out.println("Awarded Scholarships:");
         for(int i = 0; i < this.awardedScholarships.size(); i++){
             System.out.println(this.awardedScholarships.get(i).getScholarshipName());
         }

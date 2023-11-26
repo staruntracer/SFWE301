@@ -75,6 +75,13 @@ public class scholarshipDatabase {
         input.close();
     }
 
+    public void printDatabase(){
+        System.out.println("\nStart of scholarship database records");
+        for(int i = 0; i < database.size(); i++) { //This loops through the database
+            database.get(i).printScholarshipInfo(); //This prints the scholarship info
+        }
+        System.out.println("End of scholarship database records\n");
+    }
     
     public scholarship searchByName(String inputScholarship){ 
         for(int i = 0; i < database.size(); i++) { //This loops through the database
