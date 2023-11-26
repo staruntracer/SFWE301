@@ -139,6 +139,32 @@ public class userDatabase {
         return null; //This returns null if the user is not found
     }
 
+    public void printDatabase(){
+        System.out.println("\nStart of user database records");
+        for(int i = 0; i < database.size(); i++) { //This loops through the database
+            if(database.get(i).getUserPermission().equals("admin")){
+                Admin foundAdmin = (Admin) database.get(i);
+                foundAdmin.printInfo();
+            }
+            else if(database.get(i).getUserPermission().equals("donor")){
+                donor foundDonor = (donor) database.get(i);
+                foundDonor.printInfo();
+            }
+            else if(database.get(i).getUserPermission().equals("reviewer")){
+                reviewer foundReviewer = (reviewer) database.get(i);
+                foundReviewer.printInfo();
+            }
+            else if(database.get(i).getUserPermission().equals("student")){
+                student foundStudent = (student) database.get(i);
+                foundStudent.printInfo();
+            }
+            else{
+                System.out.println("**** Error occured ****");
+            }
+        }
+        System.out.println("End of user database records\n");
+    }
+
     public user searchByID(String inputID){
         for(int i = 0; i < database.size(); i++) { //This loops through the database
             if(database.get(i).getUserPermission() == "admin"){

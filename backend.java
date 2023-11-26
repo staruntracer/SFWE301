@@ -20,6 +20,7 @@ public class backend {
         System.out.println("1) Create and add object to database");
         System.out.println("2) Remove object from database");
         System.out.println("3) Edit object in database");
+        System.out.println("4) Print database");
         System.out.println();
     }
 
@@ -49,6 +50,20 @@ public class backend {
         userData.addToDatabase(admin); //This adds the admin to the database since they are the first user
         currentUser = admin; //This sets the current user to the admin 
 
+        System.out.println("********** Welcome to the UArizona Scholarship Application Managment System. **********\n");
+        System.out.print("To start using the system type 'Login':");
+        String userStartInput = input.nextLine(); //This is used to clear the scanner buffer
+        while(exit == false){
+            if(userStartInput.equals("Login")){
+                break;
+            } //This is like a makeshift start menu
+            else{
+                System.out.print("\nTo start using the system type 'Login':");
+                userStartInput = input.nextLine(); //This is used to clear the scanner buffer
+            }
+        }
+        System.out.println();
+
         while(exit == false){ //This is our main loop
             try{
                 app.printTestMenu();
@@ -64,6 +79,7 @@ public class backend {
                         app.databaseTestMenu();
                         System.out.print("Enter a number to select an option: ");
                         databaseAction = input.nextInt(); //This reads in the user's option
+                        input.nextLine(); //This is used to clear the scanner buffer
                         if(databaseAction == 1){ //add to user database
                             user newUser = new user();
                             newUser = admin.createAccount();
@@ -79,6 +95,9 @@ public class backend {
                             String userName = input.nextLine(); //This reads in the user's option
                             userData.editUserInDatabase(userName);
                         }
+                        else if(databaseAction == 4){ //print user database
+                            userData.printDatabase();
+                        }
                         else{
                             System.out.println("Invalid option. Please try again.");
                         }
@@ -93,6 +112,7 @@ public class backend {
                         app.databaseTestMenu();
                         System.out.print("Enter a number to select an option: ");
                         databaseAction = input.nextInt(); //This reads in the user's option
+                        input.nextLine(); //This is used to clear the scanner buffer
                         if(databaseAction == 1){ //add to scholarship database
                             scholarship newScholarship = new scholarship();
                             donor currentDonor = (donor) currentUser; //Need to typcast the current user to a donor
@@ -108,6 +128,9 @@ public class backend {
                             System.out.print("Enter the name of the scholarship you would like to edit: ");
                             String scholarshipName = input.nextLine(); //This reads in the user's option
                             scholarshipData.editScholarshipInDatabase(scholarshipName);
+                        }
+                        else if(databaseAction == 4){ //print scholarship database
+                            scholarshipData.printDatabase();
                         }
                         else{
                             System.out.println("Invalid option. Please try again.");
@@ -164,19 +187,19 @@ public class backend {
                         String userName = input.nextLine(); //This reads in the user's option
                         foundUser = userData.searchByName(userName);
                         if(foundUser != null){
-                            if(foundUser.getUserPermission() == "admin"){
+                            if(foundUser.getUserPermission().equals("admin")){
                                 Admin foundAdmin = (Admin) foundUser;
                                 foundAdmin.printInfo();
                             }
-                            else if(foundUser.getUserPermission() == "donor"){
+                            else if(foundUser.getUserPermission().equals("donor")){
                                 donor foundDonor = (donor) foundUser;
                                 foundDonor.printInfo();
                             }
-                            else if(foundUser.getUserPermission() == "reviewer"){
+                            else if(foundUser.getUserPermission().equals("reviewer")){
                                 reviewer foundReviewer = (reviewer) foundUser;
                                 foundReviewer.printInfo();
                             }
-                            else if(foundUser.getUserPermission() == "student"){
+                            else if(foundUser.getUserPermission().equals("student")){
                                 student foundStudent = (student) foundUser;
                                 foundStudent.printInfo();
                             }
@@ -200,16 +223,19 @@ public class backend {
                     //Print out the name of the user that was switched to
                 }
                 else{
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println("\nInvalid option. Please try again.\n");
                 }
             }
             catch(InputMismatchException e){
-                System.out.println("********** Invalid input. Returning to main menu. Nothing was saved. Please try again. **********");
+                System.out.println("\n********** Invalid input. Returning to main menu. Nothing was saved. Please try again. **********\n");
+                input.nextLine(); //This is used to clear the scanner buffer
             } //This is the error handling for the scanner object if there is a type mismatch
             catch(Exception e){
-                System.out.println("********** Unexpected error occured. Returning to main menu. Please try again. **********");
+                System.out.println("\n********** Unexpected error occured. Returning to main menu. Please try again. **********\n");
+                input.nextLine(); //This is used to clear the scanner buffer
             } //This will catch all errors if they occur and return to the main menu
         }
+        System.out.println("\n********** Thank you for using the UArizona Scholarship Application Managment System. **********\n");
         input.close(); //This closes the scanner object
     }
 }

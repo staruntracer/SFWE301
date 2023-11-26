@@ -88,6 +88,7 @@ public class user {
     ////// End of getters and setters for the user class //////
 
     public void printInfo(){
+        System.out.println("\nUser information: ");
         System.out.println("Name: " + this.name);
         System.out.println("Email Address: " + this.emailAddress);
         System.out.println("Security Question: " + this.securityQuestion); //Only print out for verification of rqmt
