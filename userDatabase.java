@@ -61,9 +61,8 @@ public class userDatabase {
     }
 
 
-    public void editUserInDatabase(String ID){ 
+    public void editUserInDatabase(String ID, Scanner input){ 
         boolean found = false; //This is a boolean to check if the user was found
-        Scanner input = new Scanner(System.in);
         for(int i = 0; i < database.size(); i++){
             String userType = database.get(i).getUserPermission(); //This gets the user type
             user foundUser = database.get(i);  //This gets the user in the database

@@ -85,7 +85,7 @@ public class backend {
                         input.nextLine(); //This is used to clear the scanner buffer
                         if(databaseAction == 1){ //add to user database
                             user newUser = new user();
-                            newUser = admin.createAccount();
+                            newUser = admin.createAccount(input);
                             userData.addToDatabase(newUser);
                         }
                         else if(databaseAction == 2){ //remove from user database
@@ -96,7 +96,7 @@ public class backend {
                         else if(databaseAction == 3){ //edit user in database
                             System.out.print("Enter the ID of the user you would like to edit: ");
                             String userName = input.nextLine(); //This reads in the user's option
-                            userData.editUserInDatabase(userName);
+                            userData.editUserInDatabase(userName, input);
                         }
                         else if(databaseAction == 4){ //print user database
                             userData.printDatabase();
@@ -129,7 +129,7 @@ public class backend {
                         else if(databaseAction == 3){   //edit scholarship in database
                             System.out.print("Enter the name of the scholarship you would like to edit: ");
                             String scholarshipName = input.nextLine(); //This reads in the user's option
-                            scholarshipData.editScholarshipInDatabase(scholarshipName);
+                            scholarshipData.editScholarshipInDatabase(scholarshipName, input);
                         }
                         else if(databaseAction == 4){ //print scholarship database
                             scholarshipData.printDatabase();
@@ -178,7 +178,12 @@ public class backend {
                         System.out.print("Enter the name of the scholarship you would like to search for: ");
                         String scholarshipName = input.nextLine(); //This reads in the user's option
                         foundScholarship = scholarshipData.searchByName(scholarshipName);
-                        foundScholarship.printScholarshipInfo(); //This prints the scholarship info
+                        if(foundScholarship != null){
+                            foundScholarship.printScholarshipInfo(); //This prints the scholarship info
+                        }
+                        else{
+                            System.out.println("Scholarship not found.");
+                        }
                         System.out.println();
                     }
                     else{

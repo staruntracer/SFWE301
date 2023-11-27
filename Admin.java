@@ -22,8 +22,7 @@ public class Admin extends user{
     }
     ///// End Getters and Setters for the Admin class /////
 
-    public user createAccount(){ 
-        Scanner input = new Scanner(System.in);
+    public user createAccount(Scanner input){ 
         System.out.print("Enter type of user (student, admin, reviewer, donor): ");
         String userPermissions = input.nextLine();
         userPermissions = userPermissions.strip(); //Removes leading and trailing whitespace
@@ -62,7 +61,6 @@ public class Admin extends user{
         else{
             System.out.println("Invalid user type. Please try again.");
         }
-        input.close(); //Closes the scanner
         return null;
     }
 
