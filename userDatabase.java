@@ -167,27 +167,27 @@ public class userDatabase {
 
     public user searchByID(String inputID){
         for(int i = 0; i < database.size(); i++) { //This loops through the database
-            if(database.get(i).getUserPermission() == "admin"){
+            if(database.get(i).getUserPermission().equals("admin")){
                 Admin adminUser = (Admin) database.get(i); //Typecast to admin child class
-                if(adminUser.getAdminID() == inputID){
+                if(adminUser.getAdminID().equals(inputID)){
                     return (user) adminUser;
                 }
             }
-            else if(database.get(i).getUserPermission() == "reviewer"){
+            else if(database.get(i).getUserPermission().equals("reviewer")){
                 reviewer reviewerUser = (reviewer) database.get(i); //Typecast to reviewer child class
-                if(reviewerUser.getReviewerID() == inputID){
+                if(reviewerUser.getReviewerID().equals(inputID)){
                     return (user) reviewerUser;
                 }
             }
-            else if(database.get(i).getUserPermission() == "student"){
+            else if(database.get(i).getUserPermission().equals("student")){
                 student studentUser = (student) database.get(i); //Typecast to student child class
-                if(studentUser.getStudentID() == inputID){
+                if(studentUser.getStudentID().equals(inputID)){
                     return (user) studentUser;
                 }
             }
-            else if(database.get(i).getUserPermission() == "donor"){
+            else if(database.get(i).getUserPermission().equals("donor")){
                 donor donorUser = (donor) database.get(i); //Typecast to donor child class
-                if(donorUser.getDonorID() == inputID){
+                if(donorUser.getDonorID().equals(inputID)){
                     return (user) donorUser;
                 }
             }

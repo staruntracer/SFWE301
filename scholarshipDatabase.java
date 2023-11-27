@@ -85,7 +85,7 @@ public class scholarshipDatabase {
     
     public scholarship searchByName(String inputScholarship){ 
         for(int i = 0; i < database.size(); i++) { //This loops through the database
-            if (database.get(i).getScholarshipName() == inputScholarship) { //This checks if the scholarship is in the database
+            if (database.get(i).getScholarshipName().equals(inputScholarship)) { //This checks if the scholarship is in the database
                 return database.get(i); //This returns the scholarship
             }
         }

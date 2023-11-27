@@ -210,17 +210,17 @@ public class student extends user{
         application newApplication = new application();
         newApplication.setScholarshipName(inputScholarship.getScholarshipName());
         newApplication.setStudentID(this.studentID);
-        System.out.println("Please enter the academic year you are applying for (i.e 2023-2024): ");
+        System.out.print("Please enter the academic year you are applying for (i.e 2023-2024): ");
         String academicYear = scnr.nextLine();
         newApplication.setAcademicYear(academicYear);
-        System.out.println("Application for scholarship '" + inputScholarship.getScholarshipName());
-        System.out.println(inputScholarship.getCustomRequiredInfo());
-        System.out.println("Please enter your responses to the following questions (seperated by commas): ");
+        System.out.println("Application for scholarship '" + inputScholarship.getScholarshipName() + "'");
+        System.out.print(inputScholarship.getCustomRequiredInfo());
+        System.out.print("Please enter your responses to the following non-essay questions (seperated by commas): ");
         String studentAnswers = scnr.nextLine();
         essayQuestions(inputScholarship);
         String scholarshipResponses = studentAnswers + this.essayResponses; //This concatinates both the student's responses to the scholarship questions and their essay responses as well
         newApplication.setScholarshipResponses(scholarshipResponses);
-        System.out.println("Would you like to submit your application? (y/n)");
+        System.out.print("Would you like to submit your application? (y/n):");
         String submitApplication = scnr.nextLine();
         if(submitApplication.equals("y")){
             this.submittedApplications.add(newApplication);
@@ -229,7 +229,6 @@ public class student extends user{
         else{
             System.out.println("Application not submitted");
         }
-        scnr.close();
     }
 
     public void updateSavedApplications(String scholarshipName){
@@ -241,7 +240,7 @@ public class student extends user{
                 System.out.println(this.submittedApplications.get(i).getScholarshipResponses());
                 System.out.println("Please enter your responses to the following questions (seperated by commas): ");
                 String studentAnswers = scnr.nextLine();
-                System.out.println("Would you like to save the changes to your application? (y/n)");
+                System.out.println("Would you like to save the changes to your application? (y/n):");
                 String saveApplication = scnr.nextLine();
                 if(saveApplication.equals("y")){
                     toEdit.setScholarshipResponses(studentAnswers);
@@ -252,7 +251,6 @@ public class student extends user{
                 }
             }
         }
-        scnr.close();
     }
 
     public void essayQuestions(scholarship inputScholarship){
@@ -262,7 +260,6 @@ public class student extends user{
         System.out.println(inputScholarship.getCustomRequiredInfo());
         String studentAnswers = scnr.nextLine();
         this.essayResponses = studentAnswers;
-        scnr.close();
     }
 
     public void cleanStoredApplications(String currentAcademicYear){
