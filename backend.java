@@ -118,7 +118,7 @@ public class backend {
                         if(databaseAction == 1){ //add to scholarship database
                             scholarship newScholarship = new scholarship();
                             donor currentDonor = (donor) currentUser; //Need to typcast the current user to a donor
-                            newScholarship = currentDonor.createNewScholarship();
+                            newScholarship = currentDonor.createNewScholarship(input);
                             scholarshipData.addToDatabase(newScholarship); //Adds the scholarship to the scholarship database
                         }
                         else if(databaseAction == 2){ //remove from scholarship database
@@ -153,14 +153,14 @@ public class backend {
                             System.out.print("Enter the name of the scholarship you would like to apply to: ");
                             String scholarshipName = input.nextLine(); //This reads in the user's option
                             scholarship returned = scholarshipData.searchByName(scholarshipName);
-                            currentStudent.applyForScholarship(returned);
+                            currentStudent.applyForScholarship(returned, input);
                             System.out.println();
                         }
                         else if(action == 2){ //Edit a previously submitted application
                             student currentStudent = (student) currentUser; //Need to typcast the current user to a student
                             System.out.print("Enter the name of the scholarship you would like to edit: ");
                             String scholarshipName = input.nextLine(); //This reads in the user's option
-                            currentStudent.updateSavedApplications(scholarshipName);
+                            currentStudent.updateSavedApplications(scholarshipName, input);
                             System.out.println();
                         }
                         else{

@@ -205,8 +205,7 @@ public class student extends user{
         System.out.println("Scholarship '" + inputScholarship.getScholarshipName() + "' archived for student '" + this.getName() + "' since the student was awarded the scholarship");
     }
 
-    public void applyForScholarship(scholarship inputScholarship){ //Maybe archive this somewhere
-        Scanner scnr = new Scanner(System.in);
+    public void applyForScholarship(scholarship inputScholarship, Scanner scnr){ //Maybe archive this somewhere
         application newApplication = new application();
         newApplication.setScholarshipName(inputScholarship.getScholarshipName());
         newApplication.setStudentID(this.studentID);
@@ -217,7 +216,7 @@ public class student extends user{
         System.out.print(inputScholarship.getCustomRequiredInfo());
         System.out.print("Please enter your responses to the following non-essay questions (seperated by commas): ");
         String studentAnswers = scnr.nextLine();
-        essayQuestions(inputScholarship);
+        essayQuestions(inputScholarship, scnr);
         String scholarshipResponses = studentAnswers + this.essayResponses; //This concatinates both the student's responses to the scholarship questions and their essay responses as well
         newApplication.setScholarshipResponses(scholarshipResponses);
         System.out.print("Would you like to submit your application? (y/n):");
@@ -231,8 +230,7 @@ public class student extends user{
         }
     }
 
-    public void updateSavedApplications(String scholarshipName){
-        Scanner scnr = new Scanner(System.in);
+    public void updateSavedApplications(String scholarshipName, Scanner scnr){
         for(int i = 0; i < this.submittedApplications.size(); i++){
             if(this.submittedApplications.get(i).getScholarshipName() == scholarshipName){
                 application toEdit = this.submittedApplications.get(i);
@@ -253,8 +251,7 @@ public class student extends user{
         }
     }
 
-    public void essayQuestions(scholarship inputScholarship){
-        Scanner scnr = new Scanner(System.in);
+    public void essayQuestions(scholarship inputScholarship, Scanner scnr){
         System.out.println("Please enter your responses to the following essay questions (seperated by commas): ");
         System.out.println("****Only answer the essay questions for this section.****");
         System.out.println(inputScholarship.getCustomRequiredInfo());
