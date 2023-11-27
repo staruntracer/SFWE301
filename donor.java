@@ -44,8 +44,7 @@ public class donor extends user{
         System.out.println();
     }
 
-    public scholarship createNewScholarship(){
-        Scanner input = new Scanner(System.in);
+    public scholarship createNewScholarship(Scanner input){
         scholarship newScholarship = new scholarship();
             System.out.print("Enter the name of the scholarship: ");
             String scholarshipName = input.nextLine();
