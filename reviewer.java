@@ -25,5 +25,6 @@ public class reviewer extends user{
     public void printInfo(){
         super.printInfo();
         System.out.println("Reviewer ID: " + this.reviewerID);
+        System.out.println();
     }
 }

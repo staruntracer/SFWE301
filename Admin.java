@@ -138,6 +138,7 @@ public class Admin extends user{
     public void printInfo(){
         super.printInfo();
         System.out.println("Admin ID: " + this.adminID);
+        System.out.println();
     }
 
 }

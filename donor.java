@@ -40,33 +40,34 @@ public class donor extends user{
     public void printInfo(){
         super.printInfo();
         System.out.println("Bursar Account Reference: " + this.bursarAccountReference);
+        System.out.println("Donor ID: " + this.donorID);
+        System.out.println();
     }
 
     public scholarship createNewScholarship(){
         Scanner input = new Scanner(System.in);
         scholarship newScholarship = new scholarship();
+            System.out.print("Enter the name of the scholarship: ");
+            String scholarshipName = input.nextLine();
+            newScholarship.setScholarshipName(scholarshipName);
 
-        System.out.println("Enter the name of the scholarship: ");
-        String scholarshipName = input.nextLine();
-        newScholarship.setScholarshipName(scholarshipName);
+            System.out.print("Enter the payout of the scholarship (integer value): ");
+            int payout = input.nextInt();
+            input.nextLine(); //This is to clear the buffer
+            newScholarship.setPayout(payout);
 
-        System.out.println("Enter the payout of the scholarship: ");
-        int payout = input.nextInt();
-        newScholarship.setPayout(payout);
+            System.out.print("Enter the deadline of the scholarship: ");
+            String deadline = input.nextLine();
+            newScholarship.setDeadline(deadline);
 
-        System.out.println("Enter the deadline of the scholarship: ");
-        String deadline = input.nextLine();
-        newScholarship.setDeadline(deadline);
+            System.out.print("Enter the custom required information of the scholarship: ");
+            String customRequiredInfo = input.nextLine();
+            newScholarship.setCustomRequiredInfo(customRequiredInfo);
 
-        System.out.println("Enter the custom required information of the scholarship: ");
-        String customRequiredInfo = input.nextLine();
-        newScholarship.setCustomRequiredInfo(customRequiredInfo);
+            System.out.print("Enter the preferred majors of the scholarship (if N/A enter None): ");
+            String preferredMajors = input.nextLine();
+            newScholarship.setPreferedMajors(preferredMajors);
 
-        System.out.println("Enter the preferred majors of the scholarship (if N/A enter None): ");
-        String preferredMajors = input.nextLine();
-        newScholarship.setPreferedMajors(preferredMajors);
-
-        input.close(); //Closes the scanner
-        return newScholarship;
+            return newScholarship;
     }
 }

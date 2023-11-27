@@ -4,7 +4,7 @@ import java.util.Scanner; //this will be used to read in test data
 public class backend {
     ////Testing classes////
     public void printTestMenu(){
-        System.out.println("Test Menu:");
+        System.out.println("Menu:");
         System.out.println("0) quit testing mode");
         System.out.println("1) Test user database");
         System.out.println("2) Test scholarship database");
@@ -17,7 +17,7 @@ public class backend {
     }
 
     public void databaseTestMenu(){
-        System.out.println("Database Test Menu:");
+        System.out.println("Database Menu:");
         System.out.println("1) Create and add object to database");
         System.out.println("2) Remove object from database");
         System.out.println("3) Edit object in database");
@@ -26,7 +26,7 @@ public class backend {
     }
 
     public void applicationTestMenu(){
-        System.out.println("Application Test Menu:");
+        System.out.println("Application Menu:");
         System.out.println("1) New application to a scholarship");
         System.out.println("2) Edit a previously submitted application");
         System.out.println();
@@ -44,14 +44,16 @@ public class backend {
         user currentUser = new user();
         String baseAdminName = "Adimn1";
         String baseAdminPermissions = "admin"; 
+        String baseAdminID = "admin1";
         Admin admin = new Admin();
         admin.setName(baseAdminName);
+        admin.setAdminID(baseAdminID);
         admin.setUserPermission(baseAdminPermissions);
         //This creates our base admin account which will be the only account in the database at the start
         userData.addToDatabase(admin); //This adds the admin to the database since they are the first user
         currentUser = admin; //This sets the current user to the admin 
 
-        System.out.println("********** Welcome to the UArizona Scholarship Application Management System. **********\n");
+        System.out.println("\n********** Welcome to the UArizona Scholarship Application Management System. **********\n");
         System.out.print("To start using the system type 'Login':");
         String userStartInput = input.nextLine(); //This is used to clear the scanner buffer
         while(exit == false){
@@ -76,7 +78,7 @@ public class backend {
                     exit = true; //This will exit the loop on the next iteration
                 }
                 else if(appAction == 1){ //This will be used for testing the user database
-                    if(currentUser.getUserPermission() == "admin"){ //This is guarded by the admin permission since only admins are allowed to work with user accounts
+                    if(currentUser.getUserPermission().equals("admin")){ //This is guarded by the admin permission since only admins are allowed to work with user accounts
                         app.databaseTestMenu();
                         System.out.print("Enter a number to select an option: ");
                         databaseAction = input.nextInt(); //This reads in the user's option
@@ -108,8 +110,7 @@ public class backend {
                     }
                 }
                 else if(appAction == 2){ //This will be used for testing the scholarship database
-                    if(currentUser.getUserPermission() == "donor" || currentUser.getUserPermission() == "admin"){ //Only donors can create scholarships
-                        //FIXME: might be an issue with admin
+                    if(currentUser.getUserPermission().equals("donor")){ //Only donors can create scholarships
                         app.databaseTestMenu();
                         System.out.print("Enter a number to select an option: ");
                         databaseAction = input.nextInt(); //This reads in the user's option
@@ -142,7 +143,7 @@ public class backend {
                     }
                 }
                 else if(appAction == 3){ //Student applies to scholarship
-                   if(currentUser.getUserPermission() == "student"){
+                   if(currentUser.getUserPermission().equals("student")){
                         app.applicationTestMenu();
                         System.out.print("Enter a number to select an option: ");
                         int action = input.nextInt(); //This reads in the user's option
@@ -153,12 +154,14 @@ public class backend {
                             String scholarshipName = input.nextLine(); //This reads in the user's option
                             scholarship returned = scholarshipData.searchByName(scholarshipName);
                             currentStudent.applyForScholarship(returned);
+                            System.out.println();
                         }
                         else if(action == 2){ //Edit a previously submitted application
                             student currentStudent = (student) currentUser; //Need to typcast the current user to a student
                             System.out.print("Enter the name of the scholarship you would like to edit: ");
                             String scholarshipName = input.nextLine(); //This reads in the user's option
                             currentStudent.updateSavedApplications(scholarshipName);
+                            System.out.println();
                         }
                         else{
                             System.out.println("Invalid option. Please try again.");
@@ -169,20 +172,21 @@ public class backend {
                    }
                 }
                 else if(appAction == 4){
-                    if(currentUser.getUserPermission() == "student" || currentUser.getUserPermission() == "reviewer" || currentUser.getUserPermission() == "admin"){
+                    if(currentUser.getUserPermission().equals("student") || currentUser.getUserPermission().equals("reviewer") || currentUser.getUserPermission().equals("admin")){
                         //This check the user permission we allow admins to do everything
                         scholarship foundScholarship;
-                        System.out.println("Enter the name of the scholarship you would like to search for: ");
+                        System.out.print("Enter the name of the scholarship you would like to search for: ");
                         String scholarshipName = input.nextLine(); //This reads in the user's option
                         foundScholarship = scholarshipData.searchByName(scholarshipName);
                         foundScholarship.printScholarshipInfo(); //This prints the scholarship info
+                        System.out.println();
                     }
                     else{
                         System.out.println("You do not have permission to perform this action.");
                     }
                 }
                 else if(appAction == 5){ //Search user by name
-                    if(currentUser.getUserPermission() == "admin"){
+                    if(currentUser.getUserPermission().equals("admin")){
                         user foundUser;
                         System.out.println("Enter the name of the user you would like to search for: ");
                         String userName = input.nextLine(); //This reads in the user's option
@@ -220,17 +224,26 @@ public class backend {
                     System.out.print("Enter the ID numeber of the user you would like to switch to: ");
                     String userID = input.nextLine(); //This reads in the user's option
                     currentUser = userData.searchByID(userID);
-                    System.out.println("User switched to " + currentUser.getName() + " successfully.");
-                    //Print out the name of the user that was switched to
+                    if(currentUser != null){
+                        System.out.println("User switched to " + currentUser.getName() + " (" + currentUser.getUserPermission() + ") successfully.");
+                        //Print out the name of the user that was switched to
+                    }
+                    else{
+                        System.out.println("User not found.\n");
+                    }
                 }
                 else if(appAction == 7){
-                    if(currentUser.getUserPermission() == "student" || currentUser.getUserPermission() == "reviewer" || currentUser.getUserPermission() == "admin"){
-                        //FIXME: might be an issue with typecasting
+                    if(currentUser.getUserPermission().equals("student")){
                         System.out.print("Enter the name of the scholarship you would like to archive (For testing purposes): ");
                         String scholarshipName = input.nextLine(); //This reads in the user's option
                         scholarship foundScholarship = scholarshipData.searchByName(scholarshipName);
                         student currentStudent = (student) currentUser; //Need to typcast the current user to a student
-                        currentStudent.archiveAwardedScholarship(foundScholarship); //This tests the archival function for a scholarship
+                        if(foundScholarship != null){
+                            currentStudent.archiveAwardedScholarship(foundScholarship); //This tests the archival function for a scholarship
+                        }
+                        else{
+                            System.out.println("Scholarship not found.");
+                        }
                     }
                     else{
                         System.out.println("You do not have permission to perform this action.");
@@ -242,11 +255,15 @@ public class backend {
             }
             catch(InputMismatchException e){
                 System.out.println("\n********** Invalid input. Returning to main menu. Nothing was saved. Please try again. **********\n");
+                System.out.println("Hit enter to acknowledge this message: \n");
                 input.nextLine(); //This is used to clear the scanner buffer
+                continue;
             } //This is the error handling for the scanner object if there is a type mismatch
             catch(Exception e){
                 System.out.println("\n********** Unexpected error occured. Returning to main menu. Please try again. **********\n");
+                System.out.println("Hit enter to acknowledge this message: \n");
                 input.nextLine(); //This is used to clear the scanner buffer
+                continue;
             } //This will catch all errors if they occur and return to the main menu
         }
         System.out.println("\n********** Thank you for using the UArizona Scholarship Application Management System. **********\n");
