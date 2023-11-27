@@ -33,9 +33,8 @@ public class scholarshipDatabase {
     }
 
 
-    public void editScholarshipInDatabase(String inputScholarshipName){ 
+    public void editScholarshipInDatabase(String inputScholarshipName, Scanner input){ 
         boolean found = false; //This is a boolean to check if the scholarship was found
-        Scanner input = new Scanner(System.in);
         for(int i = 0; i < database.size(); i++) { //This loops through the database
             if(database.get(i).getScholarshipName() == inputScholarshipName){ //NAMES are immutable so we can always use this to find the scholarship
                 found = true; //This sets the boolean to true
@@ -72,7 +71,6 @@ public class scholarshipDatabase {
         if(found == false){ //This checks if the scholarship was found
             System.out.println("Scholarship '" + inputScholarshipName + "' not found in database. No scholarships edited.");
         }
-        input.close();
     }
 
     public void printDatabase(){
