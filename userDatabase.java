@@ -22,30 +22,30 @@ public class userDatabase {
         for (int i = 0; i < database.size(); i++) { //This loops through the database
             String userType = database.get(i).getUserPermission(); //This gets the user type
             user foundUser = database.get(i);  //This gets the user in the database
-            if(userType == "admin"){
+            if(userType.equals("admin")){
                 Admin adminUser = (Admin) foundUser; //Typecast to admin child class
-                if(adminUser.getAdminID() == ID){
+                if(adminUser.getAdminID().equals(ID)){
                     database.remove(i);
                     deleted = true;
                 }
             }
-            else if(userType == "reviewer"){
+            else if(userType.equals("reviewer")){
                 reviewer reviewerUser = (reviewer) foundUser; //Typecast to reviewer child class
-                if(reviewerUser.getReviewerID() == ID){
+                if(reviewerUser.getReviewerID().equals(ID)){
                     database.remove(i);
                     deleted = true;
                 }
             }
-            else if(userType == "student"){
+            else if(userType.equals("student")){
                 student studentUser = (student) foundUser; //Typecast to student child class
-                if(studentUser.getStudentID() == ID){
+                if(studentUser.getStudentID().equals(ID)){
                     database.remove(i);
                     deleted = true;
                 }
             }
-            else if(userType == "donor"){
+            else if(userType.equals("donor")){
                 donor donorUser = (donor) foundUser; //Typecast to donor child class
-                if(donorUser.getDonorID() == ID){
+                if(donorUser.getDonorID().equals(ID)){
                     database.remove(i);
                     deleted = true;
                 }
@@ -58,6 +58,8 @@ public class userDatabase {
         if(deleted == false){ //This checks if the user was deleted
             System.out.println("User '" + ID + "' not found in database. No users removed.");
         }
+        else{
+            System.out.println("User '" + ID + "' removed from database");}
     }
 
 
@@ -66,55 +68,51 @@ public class userDatabase {
         for(int i = 0; i < database.size(); i++){
             String userType = database.get(i).getUserPermission(); //This gets the user type
             user foundUser = database.get(i);  //This gets the user in the database
-            if(userType == "admin"){
+            if(userType.equals("admin")){
                 Admin adminUser = (Admin) foundUser; //Typecast to admin child class
-                if(adminUser.getAdminID() == ID){
+                if(adminUser.getAdminID().equals(ID)){
                     int userChoice = 1;
-                    while(userChoice != 0){
-                        updateUserMenu();
-                        updateAdminMenu();
-                        userChoice = input.nextInt();
-                        updateAdmin(adminUser, userChoice, input);
-                    }
+                    updateUserMenu();
+                    updateAdminMenu();
+                    userChoice = input.nextInt();
+                    input.nextLine(); //This is to clear the buffer
+                    updateAdmin(adminUser, userChoice, input);
+                    found = true;
                 }
-                found = true;
             }
-            else if(userType == "reviewer"){
+            else if(userType.equals("reviewer")){
                 reviewer reviewerUser = (reviewer) foundUser; //Typecast to reviewer child class
-                if(reviewerUser.getReviewerID() == ID){
+                if(reviewerUser.getReviewerID().equals(ID)){
                     int userChoice = 1;
-                    while(userChoice != 0){
-                        updateUserMenu();
-                        updateReviewerMenu();
-                        userChoice = input.nextInt();
-                        updateReviewer(reviewerUser, userChoice, input);
-                    }
+                    updateUserMenu();
+                    updateReviewerMenu();
+                    userChoice = input.nextInt();
+                    input.nextLine(); //This is to clear the buffer
+                    updateReviewer(reviewerUser, userChoice, input);
                     found = true;
                 }
             }
-            else if(userType == "student"){
+            else if(userType.equals("student")){
                 student studentUser = (student) foundUser; //Typecast to student child class
-                if(studentUser.getStudentID() == ID){
+                if(studentUser.getStudentID().equals(ID)){
                     int userChoice = 1;
-                    while(userChoice != 0){
-                        updateUserMenu();
-                        updateStudentMenu();
-                        userChoice = input.nextInt();
-                        updateStudent(studentUser, userChoice, input);
-                    }
+                    updateUserMenu();
+                    updateStudentMenu();
+                    userChoice = input.nextInt();
+                    input.nextLine(); //This is to clear the buffer
+                    updateStudent(studentUser, userChoice, input);
                     found = true;
                 }
             }
-            else if(userType == "donor"){
+            else if(userType.equals("donor")){
                 donor donorUser = (donor) foundUser; //Typecast to donor child class
-                if(donorUser.getDonorID() == ID){
+                if(donorUser.getDonorID().equals(ID)){
                     int userChoice = 1;
-                    while(userChoice != 0){
-                        updateUserMenu();
-                        updateDonorMenu();
-                        userChoice = input.nextInt();
-                        updateDonor(donorUser, userChoice, input);
-                    }
+                    updateUserMenu();
+                    updateDonorMenu();
+                    userChoice = input.nextInt();
+                    input.nextLine(); //This is to clear the buffer
+                    updateDonor(donorUser, userChoice, input);
                     found = true;
                 }
             }
@@ -125,6 +123,9 @@ public class userDatabase {
         }
         if(found == false){ //This checks if the user was found
             System.out.println("User '" + ID + "' not found in database. No users edited.");
+        }
+        else{
+            System.out.println("User '" + ID + "' edited in database");
         }
     }
 
@@ -334,6 +335,7 @@ public class userDatabase {
         else if(userChoice == 9){ //Units Enrolled
             System.out.print("Enter new units enrolled: ");
             int newUnitsEnrolled = input.nextInt();
+            input.nextLine(); //This is to clear the buffer
             studentUser.setUnitsEnrolled(newUnitsEnrolled);
         }
         else if(userChoice == 10){ //Expected Graduation

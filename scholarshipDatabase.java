@@ -20,7 +20,7 @@ public class scholarshipDatabase {
     public void removeFromDatabase(String inputScholarshipName){ 
         boolean deleted = false; //This is a boolean to check if the scholarship was deleted
         for(int i = 0; i < database.size(); i++) { //This loops through the database
-            if (database.get(i).getScholarshipName() == inputScholarshipName) { //This checks if the scholarship is in the database
+            if (database.get(i).getScholarshipName().equals(inputScholarshipName)) { //This checks if the scholarship is in the database
                 database.remove(i); //This removes the scholarship from the database
                 System.out.println("Scholarship '" + inputScholarshipName + "' removed from database");
                 deleted = true; //This sets the boolean to true
@@ -29,6 +29,9 @@ public class scholarshipDatabase {
         if(deleted == false){ //This checks if the scholarship was deleted
             System.out.println("Scholarship '" + inputScholarshipName + "' not found in database. No scholarships removed.");
         }
+        else{
+            System.out.println("Scholarship '" + inputScholarshipName + "' removed from database");
+        }
 
     }
 
@@ -36,15 +39,17 @@ public class scholarshipDatabase {
     public void editScholarshipInDatabase(String inputScholarshipName, Scanner input){ 
         boolean found = false; //This is a boolean to check if the scholarship was found
         for(int i = 0; i < database.size(); i++) { //This loops through the database
-            if(database.get(i).getScholarshipName() == inputScholarshipName){ //NAMES are immutable so we can always use this to find the scholarship
+            if(database.get(i).getScholarshipName().equals(inputScholarshipName)){ //NAMES are immutable so we can always use this to find the scholarship
                 found = true; //This sets the boolean to true
                 int choice = 1;
                 while(choice != 0){
                     updateScholarshipMenu();
                     choice = input.nextInt();
+                    input.nextLine(); //This is to clear the buffer
                     if(choice == 1){ //Payout
                         System.out.print("Enter new payout: ");
                         int newPayout = input.nextInt();
+                        input.nextLine(); //This is to clear the buffer
                         database.get(i).setPayout(newPayout);
                     }
                     else if(choice == 2){ //Deadline
@@ -70,6 +75,9 @@ public class scholarshipDatabase {
         }
         if(found == false){ //This checks if the scholarship was found
             System.out.println("Scholarship '" + inputScholarshipName + "' not found in database. No scholarships edited.");
+        }
+        else{
+            System.out.println("Scholarship '" + inputScholarshipName + "' edited in database");
         }
     }
 
