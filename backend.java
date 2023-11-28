@@ -55,14 +55,14 @@ public class backend {
 
         System.out.println("\n********** Welcome to the UArizona Scholarship Application Management System. **********\n");
         System.out.print("To start using the system type 'Login':");
-        String userStartInput = input.nextLine(); //This is used to clear the scanner buffer
+        String userStartInput = input.nextLine(); 
         while(exit == false){
             if(userStartInput.equals("Login")){
                 break;
             } //This is like a makeshift start menu
             else{
                 System.out.print("\nTo start using the system type 'Login':");
-                userStartInput = input.nextLine(); //This is used to clear the scanner buffer
+                userStartInput = input.nextLine(); 
             }
         }
         System.out.println();

@@ -25,6 +25,7 @@ public class Admin extends user{
     public user createAccount(Scanner input){ 
         System.out.print("Enter type of user (student, admin, reviewer, donor): ");
         String userPermissions = input.nextLine();
+        userPermissions = userPermissions.toLowerCase(); //Converts the string to lowercase (this is used to ensure that the user can enter the type of user in any case)
         userPermissions = userPermissions.strip(); //Removes leading and trailing whitespace
         if(userPermissions.equals("student")){
             student newStudent = new student();
