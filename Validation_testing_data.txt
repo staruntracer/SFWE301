@@ -1,0 +1,136 @@
+Tests for SFWE 301 team 6 back end subsystem:
+Enter each command when prompted
+
+
+*******START OF VAL 1 testing**********
+
+Type Login -> then hit enter
+Type 2 -> then hit enter
+Type 1 -> then hit enter
+Type Scholarship 1 -> then hit enter
+Type 10000 -> then hit enter
+Type Dec. 24, 2023 -> then hit enter
+Type 3.5 Cumulative GPA, Junior -> then hit enter
+Type Software Engineering -> then hit enter
+*** The data should automatically save, then present you with the menu again.
+Type 4 -> then hit enter
+Type Scholarship 1 -> then hit enter
+*** The data entered earlier should be printed to the screen.
+
+
+
+******START OF VAL 2 testing**********
+Type Login -> then hit enter
+Type 1 -> then hit enter
+Type 1 -> then hit enter
+Type student -> then hit enter
+Type Jane Doe -> then hit enter
+Type Birthplace? , Favorite color? , First pet?  -> then hit enter
+Type Tucson Arizona, Blue, Cat  -> then hit enter
+Type Software Engineering  -> then hit enter
+Type three -> then hit enter
+*** The system should present a type error, then send you back to the menu.
+Type 2 -> then hit enter
+Type 1 -> then hit enter
+Type Scholarship 1 -> then hit enter
+Type nine -> then hit enter
+*** The system should present a type error, then send you back to the menu.
+Type Login -> then hit enter
+Type 2 -> then hit enter
+Type 1 -> then hit enter
+Type Scholarship 1 -> then hit enter
+Type 10000 -> then hit enter
+Type 3.5 Cumulative GPA, Junior -> then hit enter
+Type 19 -> then hit enter
+*** The system should present a type error, then send you back to the menu.
+Type 1  -> then hit enter
+Type 1  -> then hit enter
+Type student  -> then hit enter
+Type Jane Doe  -> then hit enter
+Type JaneDoe@arizona.edu -> then hit enter
+Type Birthplace? , Favorite color? , First pet?  -> then hit enter
+Type Tucson Arizona, Blue, Cat  -> then hit enter
+Type Software Engineering  -> then hit enter
+Type 3.915  -> then hit enter
+Type twenty -> then hit enter
+*** The system should present a type error, then send you back to the menu.
+Type 1  -> then hit enter
+Type 1  -> then hit enter
+Type student  -> then hit enter
+Type Jane Doe  -> then hit enter
+Type JaneDoe@arizona.edu -> then hit enter
+Type Birthplace? , Favorite color? , First pet?  -> then hit enter
+Type Tucson Arizona, Blue, Cat  -> then hit enter
+Type Software Engineering  -> then hit enter
+Type 3.915  -> then hit enter
+Type: 003923923  -> then hit enter
+Type: US citizen  -> then hit enter
+Type: 14  -> then hit enter
+Type: May, 2025  -> then hit enter
+Type: thirty-two -> then hit enter 
+*** The system should present a type error, then send you back to the menu.
+Type 1  -> then hit enter
+Type 1  -> then hit enter
+Type sponsor  -> then hit enter
+Type Jane Doe  -> then hit enter
+Type JaneDoe@arizona.edu -> then hit enter
+Type Birthplace? , Favorite color? , First pet?  -> then hit enter
+Type Tucson Arizona, Blue, Cat  -> then hit enter
+Type Software Engineering  -> then hit enter
+Type 3.915  -> then hit enter
+Type: 003923923  -> then hit enter
+Type: US citizen  -> then hit enter
+Type: 14  -> then hit enter
+Type: May, 2025  -> then hit enter
+Type: thirty-two -> then hit enter 
+*** The system should present a type error, then send you back to the menu.
+
+
+*******START OF VAL 3 testing*********
+Type: Login  -> then hit enter
+Type: 1  -> then hit enter
+Type: 1  -> then hit enter
+Type: admin  -> then hit enter
+Type: Kat Lopez  -> then hit enter
+Type: KatLopez@arizona.edu -> then hit enter
+Type: Birthplace? , Favorite color? , First pet?  -> then hit enter
+Type: Tucson Arizona, Blue, Cat  -> then hit enter
+Type: 1237891 -> then hit enter 
+*** Test menu should display again
+
+
+*******START OF VAL 4 testing*********
+
+Type: Login  -> then hit enter
+Type: 1  -> then hit enter
+Type: 1  -> then hit enter
+Type: sponsor  -> then hit enter
+Type: Gaby Jones  -> then hit enter
+Type: GabyJones@arizona.edu -> then hit enter
+***add in user info
+Type: B00001 -> then hit enter 
+Type: D123456 -> then hit enter 
+*** Test menu should display again
+
+
+*******START OF VAL 8 testing*********
+Type: 00000001 -> then hit enter
+Type: 4.0 -> then hit enter
+Type: Software Engineering -> then hit enter
+Type: United States -> then hit enter
+Type: May 15, 2025 -> then hit enter
+Type: 00000001 -> then hit enter
+
+
+*******START OF VAL 9 testing*********
+Type: Login  -> then hit enter
+Type: 5  -> then hit enter
+Type: Jane Doe  -> then hit enter
+**** All of the information that was entered above should be displayed in the terminal
+
+
+*******START OF VAL 10 testing*********
+Type: 7 -> then hit enter
+Type: Scholarship 1 -> then hit enter
+**** Follow the prompts as presented
+
